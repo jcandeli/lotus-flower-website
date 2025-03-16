@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GlobalStyles } from "@/app/GlobalStyles";
+import { InfiniteCanvas } from "@/components/InfiniteCanvas";
+import { GardenProvider } from "../components/GardenContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +28,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <GlobalStyles />
-        {children}
+        <GardenProvider>
+          <InfiniteCanvas>{children}</InfiniteCanvas>
+        </GardenProvider>
       </body>
     </html>
   );
